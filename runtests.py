@@ -16,10 +16,14 @@ try:
             "django.contrib.auth",
             "django.contrib.contenttypes",
             "django.contrib.sites",
+            "rest_framework",
+            "taggit",
+            "tests",
             "taggit_serializer",
         ],
         SITE_ID=1,
         NOSE_ARGS=['-s'],
+        MIDDLEWARE_CLASSES=[],
     )
 
     try:
@@ -42,7 +46,7 @@ def run_tests(*test_args):
         test_args = ['tests']
 
     # Run tests
-    test_runner = NoseTestSuiteRunner(verbosity=1)
+    test_runner = NoseTestSuiteRunner(verbosity=0)
 
     failures = test_runner.run_tests(test_args)
 
