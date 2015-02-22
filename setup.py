@@ -20,14 +20,13 @@ if sys.argv[-1] == 'publish':
     print("  git push --tags")
     sys.exit()
 
-readme = open('README.rst').read()
-history = open('HISTORY.rst').read().replace('.. :changelog:', '')
+readme = open('README.md').read()
 
 setup(
     name='taggit_serializer',
     version=version,
     description="""The Django Taggit serializer for tDjango REST Framework""",
-    long_description=readme + '\n\n' + history,
+    long_description=readme,
     author='Paul Oostenrijk',
     author_email='paul@glemma.nl',
     url='https://github.com/glemmaPaul/django-taggit-serializer',
@@ -36,6 +35,7 @@ setup(
     ],
     include_package_data=True,
     install_requires=[
+        'django-taggit',
     ],
     license="BSD",
     zip_safe=False,
