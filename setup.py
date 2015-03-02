@@ -20,13 +20,15 @@ if sys.argv[-1] == 'publish':
     print("  git push --tags")
     sys.exit()
 
-readme = open('README.md').read()
 
 setup(
-    name='taggit_serializer',
+    name='django-taggit-serializer',
     version=version,
     description="""The Django Taggit serializer for tDjango REST Framework""",
-    long_description=readme,
+    long_description="The Django Taggit Serializer for the Django"
+                     "REST Framework developers. "
+                     "Installation can be found on "
+                     "https://github.com/glemmaPaul/django-taggit-serializer",
     author='Paul Oostenrijk',
     author_email='paul@glemma.nl',
     url='https://github.com/glemmaPaul/django-taggit-serializer',

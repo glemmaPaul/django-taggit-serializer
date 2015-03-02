@@ -10,7 +10,7 @@ Tests for `django-taggit-serializer` models module.
 
 import unittest
 
-from rest_framework.exceptions import ParseError
+from rest_framework.exceptions import ValidationError
 
 from taggit_serializer import serializers
 from .serializers import TestModelSerializer
@@ -31,8 +31,8 @@ class TestTaggit_serializer(unittest.TestCase):
         try:
             incorrect_value = serializer_field.to_internal_value(
                 incorrect_value)
-        except ParseError, e:
-            assert str(e) == "expected a list of data"
+        except ValidationError:
+            pass
 
     def test_taggit_serializer_update(self):
         """ Test if serializer class is working properly on updating object """
