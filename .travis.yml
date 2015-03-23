@@ -12,6 +12,3 @@ install: pip install -r requirements-test.txt
 
 # command to run tests using coverage, e.g. python setup.py test
 script: coverage run --source taggit_serializer runtests.py
-
-# report coverage to coveralls.io
-after_success: coveralls
