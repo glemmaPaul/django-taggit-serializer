@@ -3,6 +3,7 @@ from rest_framework import serializers
 
 
 class TagListSerializerField(serializers.ListField):
+    child = serializers.CharField()
 
     def to_representation(self, obj):
         if type(obj) is not list:
