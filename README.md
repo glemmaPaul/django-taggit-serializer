@@ -1,5 +1,7 @@
 # Django Taggit Rest Serializer
 
+[![Build Status](https://travis-ci.org/glemmaPaul/django-taggit-serializer.svg?branch=master)](https://travis-ci.org/glemmaPaul/django-taggit-serializer)
+
 ## About
 This package is meant for the `django-taggit` package which is available [here](https://github.com/alex/django-taggit)
 
