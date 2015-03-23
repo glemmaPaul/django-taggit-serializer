@@ -12,4 +12,4 @@ python:
 install: pip install -r requirements-test.txt
 
 # command to run tests using coverage, e.g. python setup.py test
-script: coverage run --source taggit_serializer runtests.py
+script: python runtests.py
