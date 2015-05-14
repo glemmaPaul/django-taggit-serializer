@@ -62,3 +62,21 @@ class TestTaggit_serializer(unittest.TestCase):
         test_model = serializer.save()
 
         assert len(test_model.tags.all()) == len(request_data.get('tags'))
+
+    def test_taggit_removes_tags(self):
+        """
+        Test if the old assigned tags are removed
+        """
+        test_model = TestModel.objects.create()
+        test_model.tags.add("1")
+
+        request_data = {
+            "tags": ["2", "3"]
+        }
+
+        serializer = TestModelSerializer(test_model, data=request_data)
+        serializer.is_valid()
+        test_model = serializer.save()
+
+        assert TestModel.objects.filter(tags__name__in=["1"]).count() == 0
+        assert TestModel.objects.filter(tags__name__in=["1", "2"]).count() == 1

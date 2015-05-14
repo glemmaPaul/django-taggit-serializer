@@ -30,7 +30,12 @@ class TaggitSerializer(serializers.Serializer):
     def _save_tags(self, tag_object, tags):
         for key in tags.keys():
             tag_values = tags.get(key)
-            [getattr(tag_object, key).add(tag) for tag in tag_values]
+            for tag in tag_values:
+                getattr(tag_object, key).add(tag)
+
+            for tag in tag_object.tags.names():
+                if tag not in tag_values:
+                    getattr(tag_object, key).remove(tag)
 
         return tag_object
 
