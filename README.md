@@ -38,6 +38,17 @@ class YourSerializer(TaggitSerializer, serializers.ModelSerializer):
         model = YourModel
 ```
 
+And in your `GenericTaggedItemBase` `Model` you need to add the related field attribute as such:
+```python
+from taggit.models import GenericTaggedItemBase
+
+
+class YourTaggedItem(GenericTaggedItemBase):
+
+    tag = models.ForeignKey("YourTaggedItem", related_name="%(app_label)s_%(class)ss")
+    # more fields here
+```
+
 And you're done, so now you can add tags to your model
 
 ## Contribute
