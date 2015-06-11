@@ -33,7 +33,7 @@ class TaggitSerializer(serializers.Serializer):
             for tag in tag_values:
                 getattr(tag_object, key).add(tag)
 
-            for tag in tag_object.tags.names():
+            for tag in getattr(tag_object, key).names():
                 if tag not in tag_values:
                     getattr(tag_object, key).remove(tag)
 
