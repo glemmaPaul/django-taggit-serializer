@@ -5,6 +5,11 @@ import json
 import six
 
 class TagList(list):
+    def __init__(self, *args, **kwargs):
+        pretty_print = kwargs.pop("pretty_print", True)
+        list.__init__(self, *args, **kwargs)
+        self.pretty_print = pretty_print
+    
     def __add__(self, rhs):
         return TagList(list.__add__(self, rhs))
     
@@ -16,7 +21,10 @@ class TagList(list):
             return result
     
     def __str__(self):
-        return json.dumps(self)
+        if self.pretty_print:
+            return json.dumps(self, sort_keys=True, indent=4, separators=(',', ': '))
+        else:
+            return json.dumps(self)
 
 class TagListSerializerField(serializers.Field):
     child = serializers.CharField()
@@ -25,6 +33,17 @@ class TagListSerializerField(serializers.Field):
         'invalid_json': _('Invalid json list. A tag list submitted in string form must be valid json.'),
         'not_a_str': _("All list items must be of string type.")
     }
+    
+    def __init__(self, **kwargs):
+        pretty_print = kwargs.pop("pretty_print", True)
+        
+        style = kwargs.pop("style", {})
+        kwargs["style"] = {'base_template': 'textarea.html'}
+        kwargs["style"].update(style)
+        
+        super(TagListSerializerField, self).__init__(**kwargs)
+        
+        self.pretty_print = pretty_print
     
     def to_internal_value(self, value):
         if isinstance(value, six.string_types):
@@ -50,7 +69,7 @@ class TagListSerializerField(serializers.Field):
         if not isinstance(value, TagList):
             if not isinstance(value, list):
                 value = [tag.name for tag in value.all()]
-            value = TagList(value)
+            value = TagList(value, pretty_print=self.pretty_print)
 
         return value
 
