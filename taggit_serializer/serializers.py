@@ -2,6 +2,7 @@
 from rest_framework import serializers
 from django.utils.translation import ugettext_lazy as _
 import json
+import six
 
 class TagList(list):
     def __add__(self, rhs):
@@ -26,7 +27,7 @@ class TagListSerializerField(serializers.Field):
     }
     
     def to_internal_value(self, value):
-        if isinstance(value, basestring):
+        if isinstance(value, six.string_types):
             if not value:
                 value = "[]"
             try:
@@ -38,7 +39,7 @@ class TagListSerializerField(serializers.Field):
             self.fail('not_a_list', input_type=type(value).__name__)
         
         for s in value:
-            if not isinstance(s, basestring):
+            if not isinstance(s, six.string_types):
                 self.fail('not_a_str')
             
             self.child.run_validation(s)
