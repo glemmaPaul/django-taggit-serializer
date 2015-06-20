@@ -54,11 +54,11 @@ class TaggitSerializer(serializers.Serializer):
 
         return self._save_tags(tag_object, to_be_tagged)
 
-    def update(self, object, validated_data):
+    def update(self, instance, validated_data):
         to_be_tagged, validated_data = self._pop_tags(validated_data)
 
         tag_object = super(TaggitSerializer, self).update(
-            object, validated_data)
+            instance, validated_data)
 
         return self._save_tags(tag_object, to_be_tagged)
 
