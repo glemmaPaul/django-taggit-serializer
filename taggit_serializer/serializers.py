@@ -22,6 +22,7 @@ class TagListSerializerField(serializers.Field):
     default_error_messages = {
         'not_a_list': _('Expected a list of items but got type "{input_type}".'),
         'invalid_json': _('Invalid json list. A tag list submitted in string form must be valid json.'),
+        'not_a_str': _("All list items must be of string type.")
     }
     
     def to_internal_value(self, value):
@@ -35,8 +36,14 @@ class TagListSerializerField(serializers.Field):
         
         if not isinstance(value, list):
             self.fail('not_a_list', input_type=type(value).__name__)
+        
+        for s in value:
+            if not isinstance(s, basestring):
+                self.fail('not_a_str')
+            
+            self.child.run_validation(s)
 
-        return [self.child.run_validation(s) for s in value]
+        return value
 
     def to_representation(self, value):
         if not isinstance(value, TagList):
