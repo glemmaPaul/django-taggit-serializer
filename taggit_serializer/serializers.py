@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
-from rest_framework import serializers
-from django.utils.translation import ugettext_lazy as _
 import json
+
+# Third party
 import six
+from django.utils.translation import ugettext_lazy as _
+from rest_framework import serializers
 
 class TagList(list):
     def __init__(self, *args, **kwargs):
