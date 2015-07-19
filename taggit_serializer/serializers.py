@@ -104,5 +104,7 @@ class TaggitSerializer(serializers.Serializer):
         for key in self.fields.keys():
             field = self.fields[key]
             if isinstance(field, TagListSerializerField):
-                to_be_tagged[key] = validated_data.pop(key)
+                if key in validated_data:
+                    to_be_tagged[key] = validated_data.pop(key)
+
         return (to_be_tagged, validated_data)
