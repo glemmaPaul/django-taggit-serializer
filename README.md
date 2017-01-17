@@ -9,16 +9,16 @@ The `django-taggit` package makes it possible to tag a certain module.
 
 ## Installation
 To install this package you can use the following `pip` installation:
-```
+```shell
 pip install django-taggit-serializer
 ```
 
 Then, add `taggit_serializer` to your `Settings` in `INSTALLED_APPS`:
-```
-    INSTALLED_APS = (
-        ...
-        'taggit_serializer',
-    )
+```python
+INSTALLED_APS = (
+     ...
+    'taggit_serializer',
+)
 ```
 
 ## Usage
