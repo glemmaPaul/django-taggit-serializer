@@ -44,6 +44,7 @@ class TagListSerializerField(serializers.Field):
 
     def __init__(self, **kwargs):
         pretty_print = kwargs.pop("pretty_print", True)
+        trim_whitespace = kwargs.pop("trim_whitespace", True)
 
         style = kwargs.pop("style", {})
         kwargs["style"] = {'base_template': 'textarea.html'}
@@ -52,6 +53,7 @@ class TagListSerializerField(serializers.Field):
         super(TagListSerializerField, self).__init__(**kwargs)
 
         self.pretty_print = pretty_print
+        self.trim_whitespace = trim_whitespace
 
     def to_internal_value(self, value):
         if isinstance(value, six.string_types):
@@ -70,6 +72,9 @@ class TagListSerializerField(serializers.Field):
                 self.fail('not_a_str')
 
             self.child.run_validation(s)
+
+        if self.trim_whitespace:
+            value = [s.strip() for s in value]
 
         return value
 
