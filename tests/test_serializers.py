@@ -34,6 +34,18 @@ class TestTaggit_serializer(unittest.TestCase):
         except ValidationError:
             pass
 
+    def test_taggit_serializer_field_trim_whitespace(self):
+        tags = ["a", "   b   "]
+        serializer_field = serializers.TagListSerializerField()
+        value = serializer_field.to_internal_value(tags)
+        assert "a" in value
+        assert "b" in value
+
+        serializer_field = serializers.TagListSerializerField(trim_whitespace=False)
+        value = serializer_field.to_internal_value(tags)
+        assert "a" in value
+        assert "   b   " in value
+
     def test_taggit_serializer_update(self):
         """ Test if serializer class is working properly on updating object """
         request_data = {

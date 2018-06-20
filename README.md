@@ -40,6 +40,13 @@ class YourSerializer(TaggitSerializer, serializers.ModelSerializer):
 
 And you're done, so now you can add tags to your model
 
+Please note that `TagListSerializerField` strips leading/trailing whitespace from tag names by default.
+
+To prevent this, use the kwarg `trim_whitespace=False` upon instantiation:
+```python
+tags = TagListSerializerField(trim_whitespace=False)
+```
+
 ## Contribute
 
 Please feel free to create pull requests and issues!
