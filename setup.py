@@ -38,6 +38,7 @@ setup(
     include_package_data=True,
     install_requires=[
         'django-taggit',
+        'six'
     ],
     license="BSD",
     zip_safe=False,
