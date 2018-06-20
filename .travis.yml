@@ -4,17 +4,25 @@ language: python
 sudo: false
 
 python:
+  - "3.6"
   - "3.5"
   - "2.7"
 
 env:
-  - DJANGO_REST_VERSION=3.3.3
-  - DJANGO_REST_VERSION=3.2.5
-  - DJANGO_REST_VERSION=3.1.3
+  - DJANGO_REST_VERSION=3.8.0 DJANGO_VERSION=">=2.0"
+  - DJANGO_REST_VERSION=3.7.7 DJANGO_VERSION="<2.0"
+  - DJANGO_REST_VERSION=3.3.3 DJANGO_VERSION="<1.11"
+  - DJANGO_REST_VERSION=3.2.5 DJANGO_VERSION="<=1.9"
+  - DJANGO_REST_VERSION=3.1.3 DJANGO_VERSION="<=1.8"
+
+matrix:
+  exclude:
+     - python: "2.7"
+       env: DJANGO_REST_VERSION=3.8.0 DJANGO_VERSION=">=2.0"
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
-  - pip install -q djangorestframework==$DJANGO_REST_VERSION
+  - pip install -q djangorestframework==$DJANGO_REST_VERSION Django$DJANGO_VERSION
   - pip install -r requirements-test.txt
 
 # command to run tests using coverage, e.g. python setup.py test
