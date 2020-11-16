@@ -32,7 +32,7 @@ class TagList(list):
 
 
 class TagListSerializerField(serializers.Field):
-    child = serializers.CharField()
+    child = serializers.CharField(max_length=100)
     default_error_messages = {
         'not_a_list': _(
             'Expected a list of items but got type "{input_type}".'),
