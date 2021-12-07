@@ -3,7 +3,7 @@ import json
 
 # Third party
 import six
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 
 
@@ -25,8 +25,7 @@ class TagList(list):
 
     def __str__(self):
         if self.pretty_print:
-            return json.dumps(
-                self, sort_keys=True, indent=4, separators=(',', ': '))
+            return json.dumps(self, sort_keys=True, indent=4, separators=(",", ": "))
         else:
             return json.dumps(self)
 
@@ -34,11 +33,12 @@ class TagList(list):
 class TagListSerializerField(serializers.Field):
     child = serializers.CharField()
     default_error_messages = {
-        'not_a_list': _(
-            'Expected a list of items but got type "{input_type}".'),
-        'invalid_json': _('Invalid json list. A tag list submitted in string'
-                          ' form must be valid json.'),
-        'not_a_str': _('All list items must be of string type.')
+        "not_a_list": _('Expected a list of items but got type "{input_type}".'),
+        "invalid_json": _(
+            "Invalid json list. A tag list submitted in string"
+            " form must be valid json."
+        ),
+        "not_a_str": _("All list items must be of string type."),
     }
     order_by = None
 
@@ -46,7 +46,7 @@ class TagListSerializerField(serializers.Field):
         pretty_print = kwargs.pop("pretty_print", True)
 
         style = kwargs.pop("style", {})
-        kwargs["style"] = {'base_template': 'textarea.html'}
+        kwargs["style"] = {"base_template": "textarea.html"}
         kwargs["style"].update(style)
 
         super(TagListSerializerField, self).__init__(**kwargs)
@@ -60,14 +60,14 @@ class TagListSerializerField(serializers.Field):
             try:
                 value = json.loads(value)
             except ValueError:
-                self.fail('invalid_json')
+                self.fail("invalid_json")
 
         if not isinstance(value, list):
-            self.fail('not_a_list', input_type=type(value).__name__)
+            self.fail("not_a_list", input_type=type(value).__name__)
 
         for s in value:
             if not isinstance(s, six.string_types):
-                self.fail('not_a_str')
+                self.fail("not_a_str")
 
             self.child.run_validation(s)
 
@@ -97,8 +97,7 @@ class TaggitSerializer(serializers.Serializer):
     def update(self, instance, validated_data):
         to_be_tagged, validated_data = self._pop_tags(validated_data)
 
-        tag_object = super(TaggitSerializer, self).update(
-            instance, validated_data)
+        tag_object = super(TaggitSerializer, self).update(instance, validated_data)
 
         return self._save_tags(tag_object, to_be_tagged)
 
