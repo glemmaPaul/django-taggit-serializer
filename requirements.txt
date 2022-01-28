@@ -1,5 +1,5 @@
-django>=1.8
+django>=2.2
 wheel==0.24.0
 # Additional requirements go here
-django-taggit>=0.22.2
+django-taggit>=1.2.0
 six
