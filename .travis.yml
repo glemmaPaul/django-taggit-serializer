@@ -4,7 +4,6 @@ language: python
 sudo: false
 
 python:
-  - "3.10"
   - "3.9"
   - "3.8"
   - "3.7"
@@ -13,7 +12,7 @@ python:
 env:
   - DJANGO_REST_VERSION=3.8.0 DJANGO_VERSION="==2.2"
   - DJANGO_REST_VERSION=3.9.3 DJANGO_VERSION="==3.2"
-  - DJANGO_REST_VERSION=3.12.4 DJANGO_VERSION="==4.0"
+  - DJANGO_REST_VERSION=3.12.4 DJANGO_VERSION=">=4.0"
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
 install:
