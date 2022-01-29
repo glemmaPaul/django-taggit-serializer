@@ -22,16 +22,16 @@ if sys.argv[-1] == 'publish':
 
 
 setup(
-    name='django-taggit-serializer',
+    name='dj-taggit-serializer',
     version=version,
     description="""The Django Taggit serializer for tDjango REST Framework""",
     long_description="The Django Taggit Serializer for the Django"
                      "REST Framework developers. "
                      "Installation can be found on "
                      "https://github.com/glemmaPaul/django-taggit-serializer",
-    author='Paul Oostenrijk',
-    author_email='paul@glemma.nl',
-    url='https://github.com/glemmaPaul/django-taggit-serializer',
+    author='Paul Oostenrijk, Adrian Gonzalez',
+    author_email='paul@glemma.nl, adriangonzalezmontemayor@gmail.com',
+    url='https://github.com/adriangzz/dj-taggit-serializer',
     packages=[
         'taggit_serializer',
     ],
