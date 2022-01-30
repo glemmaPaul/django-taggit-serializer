@@ -24,7 +24,7 @@ if sys.argv[-1] == 'publish':
 setup(
     name='dj-taggit-serializer',
     version=version,
-    description="""The Django Taggit serializer for tDjango REST Framework""",
+    description="""The Django Taggit serializer for Django REST Framework""",
     long_description="The Django Taggit Serializer for the Django"
                      "REST Framework developers. "
                      "Installation can be found on "
