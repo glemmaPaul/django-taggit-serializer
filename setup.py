@@ -28,7 +28,7 @@ setup(
     long_description="The Django Taggit Serializer for the Django"
                      "REST Framework developers. "
                      "Installation can be found on "
-                     "https://github.com/glemmaPaul/django-taggit-serializer",
+                     "https://github.com/adriangzz/dj-taggit-serializer",
     author='Paul Oostenrijk, Adrian Gonzalez',
     author_email='paul@glemma.nl, adriangonzalezmontemayor@gmail.com',
     url='https://github.com/adriangzz/dj-taggit-serializer',
@@ -41,7 +41,7 @@ setup(
     ],
     license="BSD",
     zip_safe=False,
-    keywords='django-taggit-serializer',
+    keywords='dj-taggit-serializer',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Framework :: Django',

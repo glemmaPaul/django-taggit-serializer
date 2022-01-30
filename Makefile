@@ -24,7 +24,7 @@ clean-pyc:
 	find . -name '*~' -exec rm -f {} +
 
 lint:
-	flake8 django-taggit-serializer tests
+	flake8 dj-taggit-serializer tests
 
 test:
 	python runtests.py test
@@ -33,15 +33,15 @@ test-all:
 	tox
 
 coverage:
-	coverage run --source django-taggit-serializer setup.py test
+	coverage run --source dj-taggit-serializer setup.py test
 	coverage report -m
 	coverage html
 	open htmlcov/index.html
 
 docs:
-	rm -f docs/django-taggit-serializer.rst
+	rm -f docs/dj-taggit-serializer.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ django-taggit-serializer
+	sphinx-apidoc -o docs/ dj-taggit-serializer
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	open docs/_build/html/index.html

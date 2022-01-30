@@ -13,7 +13,7 @@ The `django-taggit` package makes it possible to tag a certain module.
 To install this package you can use the following `pip` installation:
 
 ```
-pip install django-taggit-serializer
+pip install dj-taggit-serializer
 ```
 
 Then, add `taggit_serializer` to your `Settings` in `INSTALLED_APPS`:

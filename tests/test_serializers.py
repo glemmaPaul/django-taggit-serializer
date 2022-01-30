@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 """
-test_django-taggit-serializer
+test_dj-taggit-serializer
 ------------
 
-Tests for `django-taggit-serializer` models module.
+Tests for `dj-taggit-serializer` models module.
 """
 
 import unittest

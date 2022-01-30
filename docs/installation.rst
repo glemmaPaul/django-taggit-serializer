@@ -4,9 +4,9 @@ Installation
 
 At the command line::
 
-    $ easy_install django-taggit-serializer
+    $ easy_install dj-taggit-serializer
 
 Or, if you have virtualenvwrapper installed::
 
-    $ mkvirtualenv django-taggit-serializer
-    $ pip install django-taggit-serializer
+    $ mkvirtualenv dj-taggit-serializer
+    $ pip install dj-taggit-serializer
