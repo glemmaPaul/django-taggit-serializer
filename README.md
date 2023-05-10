@@ -1,12 +1,13 @@
 # Django Taggit Rest Serializer
 
 ⚠️⚠️⚠️
-WARNING
-This project is not maintained anymore, it is picked up in the main [django-taggit project](https://github.com/alex/django-taggit), documentation on Django Rest Framework integration is here: 
+
+__WARNING__
+This project is not maintained anymore, it is now vendored into the main [django-taggit project](https://github.com/alex/django-taggit), documentation on Django Rest Framework integration can be found here: 
+
 https://django-taggit.readthedocs.io/en/latest/serializers.html
 
-Thank you all - you lovely people - for your contributations and/or usage!
-⚠️⚠️⚠️
+Thank you all - you lovely people - for your contributations and/or usage! <3
 
 
 [![Build Status](https://travis-ci.org/glemmaPaul/django-taggit-serializer.svg?branch=master)](https://travis-ci.org/glemmaPaul/django-taggit-serializer)
