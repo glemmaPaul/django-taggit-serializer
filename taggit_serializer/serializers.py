@@ -40,9 +40,9 @@ class TagListSerializerField(serializers.Field):
                           ' form must be valid json.'),
         'not_a_str': _('All list items must be of string type.')
     }
-    order_by = None
 
     def __init__(self, **kwargs):
+        order_by = kwargs.pop("order_by", None)
         pretty_print = kwargs.pop("pretty_print", True)
 
         style = kwargs.pop("style", {})
@@ -51,6 +51,7 @@ class TagListSerializerField(serializers.Field):
 
         super(TagListSerializerField, self).__init__(**kwargs)
 
+        self.order_by = order_by
         self.pretty_print = pretty_print
 
     def to_internal_value(self, value):
